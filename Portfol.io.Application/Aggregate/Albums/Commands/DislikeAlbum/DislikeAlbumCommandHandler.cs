@@ -17,7 +17,7 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.DislikeAlbum
 
         public async Task<Unit> Handle(DislikeAlbumCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.AlbumLikes.FirstOrDefaultAsync(u => u.UserId == request.UserId 
+            var entity = await _dbContext.AlbumLikes.FirstOrDefaultAsync(u => u.UserId == request.UserId
                 && u.AlbumId == request.AlbumId, cancellationToken);
 
             if (entity is null || entity.AlbumId != request.AlbumId || entity.UserId != request.UserId)

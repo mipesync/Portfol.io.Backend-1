@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using Portfol.io.Application.Aggregate.Photos.Commands.AddImage;
 using Portfol.io.Application.Common.Mappings;
-using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
 
 namespace Portfol.io.WebAPI.Models
 {

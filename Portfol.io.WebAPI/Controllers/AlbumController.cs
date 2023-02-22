@@ -86,6 +86,7 @@ namespace Portfol.io.WebAPI.Controllers
             try
             {
                 var query = new GetAlbumsByUserIdQuery { UserId = userId };
+                //TODO: запихнуть в инициализатор
                 query.AUserId = UserId;
 
                 var result = await Mediator.Send(query);
@@ -265,8 +266,7 @@ namespace Portfol.io.WebAPI.Controllers
                 var command = new DeleteAlbumCoverCommand
                 {
                     AlbumId = AlbumId,
-                    WebRootPath = _environment.WebRootPath,
-                    UserId = UserId
+                    WebRootPath = _environment.WebRootPath
                 };
 
                 await Mediator.Send(command);
