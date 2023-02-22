@@ -10,7 +10,7 @@ namespace Portfol.io.Persistence
         public static IServiceCollection AddPersistence(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<PortfolioDbContext>(option => option.UseNpgsql(connectionString));
-            services.AddScoped<IPortfolioDbContext>(provider => provider.GetService<PortfolioDbContext>()!);
+            services.AddScoped<IDbContext>(provider => provider.GetService<PortfolioDbContext>()!);
             services.AddTransient<IConfigSectionGetter, ConfigSectionGetter>();
             services.AddTransient<IImageUploader, ImageUploader>();
 

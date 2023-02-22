@@ -9,9 +9,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.LikeAlbum
 {
     public class LikeAlbumCommandHandler : IRequestHandler<LikeAlbumCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public LikeAlbumCommandHandler(IPortfolioDbContext dbContext)
+        public LikeAlbumCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Portfol.io.Persistence
 {
-    public class PortfolioDbContext : DbContext, IPortfolioDbContext
+    public class PortfolioDbContext : DbContext, IDbContext
     {
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options) { }
 

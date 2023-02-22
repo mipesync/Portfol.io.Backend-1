@@ -6,9 +6,9 @@ namespace Portfol.io.Application.Aggregate.Tags.Commands.AddTag
 {
     public class AddTagCommandHandler : IRequestHandler<AddTagCommand, Guid>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public AddTagCommandHandler(IPortfolioDbContext dbContext)
+        public AddTagCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

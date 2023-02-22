@@ -9,9 +9,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.MarkAlbum
 {
     public class MarkAlbumCommandHandler : IRequestHandler<MarkAlbumCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public MarkAlbumCommandHandler(IPortfolioDbContext dbContext)
+        public MarkAlbumCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

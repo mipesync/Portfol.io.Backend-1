@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Tags.Commands.DeleteTag
 {
     public class DeleteTagCommandHandler : IRequestHandler<DeleteTagCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public DeleteTagCommandHandler(IPortfolioDbContext dbContext)
+        public DeleteTagCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

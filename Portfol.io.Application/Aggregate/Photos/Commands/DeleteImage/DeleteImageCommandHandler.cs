@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage
 {
     public class DeleteImageCommandHandler : IRequestHandler<DeleteImageCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public DeleteImageCommandHandler(IPortfolioDbContext dbContext)
+        public DeleteImageCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -6,9 +6,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.CreateAlbum
 {
     public class CreateAlbumCommandHandler : IRequestHandler<CreateAlbumCommand, Guid>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public CreateAlbumCommandHandler(IPortfolioDbContext dbContext)
+        public CreateAlbumCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

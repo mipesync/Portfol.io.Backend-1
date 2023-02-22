@@ -16,7 +16,7 @@ namespace Portfol.io.Tests.Common
             Context = PortfolioContextFactory.Create();
             var mapperConfig = new MapperConfiguration(config =>
             {
-                config.AddProfile(new AssemblyMappingProfile(typeof(IPortfolioDbContext).Assembly));
+                config.AddProfile(new AssemblyMappingProfile(typeof(IDbContext).Assembly));
             });
             Mapper = mapperConfig.CreateMapper();
 

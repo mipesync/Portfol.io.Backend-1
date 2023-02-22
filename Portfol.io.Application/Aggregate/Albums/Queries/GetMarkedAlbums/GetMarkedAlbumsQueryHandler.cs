@@ -11,10 +11,10 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetMarkedAlbums
 {
     public class GetMarkedAlbumsQueryHandler : IRequestHandler<GetMarkedAlbumsQuery, GetAlbumsDto>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetMarkedAlbumsQueryHandler(IPortfolioDbContext dbContext, IMapper mapper)
+        public GetMarkedAlbumsQueryHandler(IDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;

@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Tags.Queries.GetTags
 {
     public class GetTagsQueryHandler : IRequestHandler<GetTagsQuery, List<Tag>>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public GetTagsQueryHandler(IPortfolioDbContext dbContext)
+        public GetTagsQueryHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

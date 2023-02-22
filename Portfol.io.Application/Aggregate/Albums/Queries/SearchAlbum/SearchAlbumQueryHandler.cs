@@ -9,10 +9,10 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.SearchAlbum
 {
     public class SearchAlbumQueryHandler : IRequestHandler<SearchAlbumQuery, GetAlbumsDto>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public SearchAlbumQueryHandler(IMapper mapper, IPortfolioDbContext dbContext)
+        public SearchAlbumQueryHandler(IMapper mapper, IDbContext dbContext)
         {
             _mapper = mapper;
             _dbContext = dbContext;

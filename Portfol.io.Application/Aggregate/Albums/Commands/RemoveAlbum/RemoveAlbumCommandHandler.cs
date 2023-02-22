@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.RemoveAlbum
 {
     public class RemoveAlbumCommandHandler : IRequestHandler<RemoveAlbumCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public RemoveAlbumCommandHandler(IPortfolioDbContext dbContext)
+        public RemoveAlbumCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -8,10 +8,10 @@ namespace Portfol.io.Application.Aggregate.Photos.Commands.AddImage
 {
     public class AddImageCommandHandler : IRequestHandler<AddImageCommand, ICollection<Guid>>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IImageUploader _uploader;
 
-        public AddImageCommandHandler(IPortfolioDbContext dbContext, IImageUploader uploader)
+        public AddImageCommandHandler(IDbContext dbContext, IImageUploader uploader)
         {
             _dbContext = dbContext;
             _uploader = uploader;

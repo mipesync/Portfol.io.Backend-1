@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.DeleteAlbumCover
 {
     public class DeleteAlbumCoverCommandHandler : IRequestHandler<DeleteAlbumCoverCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public DeleteAlbumCoverCommandHandler(IPortfolioDbContext dbContext)
+        public DeleteAlbumCoverCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

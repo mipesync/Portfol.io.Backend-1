@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.DislikeAlbum
 {
     public class DislikeAlbumCommandHandler : IRequestHandler<DislikeAlbumCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public DislikeAlbumCommandHandler(IPortfolioDbContext dbContext)
+        public DislikeAlbumCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

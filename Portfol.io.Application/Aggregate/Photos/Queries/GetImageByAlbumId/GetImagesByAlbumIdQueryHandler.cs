@@ -11,10 +11,10 @@ namespace Portfol.io.Application.Aggregate.Photos.Queries.GetImageByAlbumId
 {
     public class GetImagesByAlbumIdQueryHandler : IRequestHandler<GetImagesByAlbumIdQuery, GetImagesByAlbumIdDto>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetImagesByAlbumIdQueryHandler(IMapper mapper, IPortfolioDbContext dbContext)
+        public GetImagesByAlbumIdQueryHandler(IMapper mapper, IDbContext dbContext)
         {
             _mapper = mapper;
             _dbContext = dbContext;

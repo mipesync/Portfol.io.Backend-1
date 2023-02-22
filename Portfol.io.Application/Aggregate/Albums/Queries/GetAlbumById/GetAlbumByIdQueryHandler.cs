@@ -11,11 +11,11 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumById
 {
     public class GetAlbumByIdQueryHandler : IRequestHandler<GetAlbumByIdQuery, GetAlbumLookupDto>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
 
-        public GetAlbumByIdQueryHandler(IPortfolioDbContext dbContext, IMapper mapper, IConfiguration config)
+        public GetAlbumByIdQueryHandler(IDbContext dbContext, IMapper mapper, IConfiguration config)
         {
             _dbContext = dbContext;
             _mapper = mapper;

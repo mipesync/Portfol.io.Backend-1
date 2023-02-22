@@ -8,9 +8,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.UpdateAlbum
 {
     public class UpdateAlbumCommandHandler : IRequestHandler<UpdateAlbumCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
 
-        public UpdateAlbumCommandHandler(IPortfolioDbContext dbContext)
+        public UpdateAlbumCommandHandler(IDbContext dbContext)
         {
             _dbContext = dbContext;
         }

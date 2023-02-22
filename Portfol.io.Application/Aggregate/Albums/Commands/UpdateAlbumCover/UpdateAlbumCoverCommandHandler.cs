@@ -8,10 +8,10 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.UpdateAlbumCover
 {
     public class UpdateAlbumCoverCommandHandler : IRequestHandler<UpdateAlbumCoverCommand, Unit>
     {
-        private readonly IPortfolioDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IImageUploader _imageUploader;
 
-        public UpdateAlbumCoverCommandHandler(IPortfolioDbContext dbContext, IImageUploader imageUploader)
+        public UpdateAlbumCoverCommandHandler(IDbContext dbContext, IImageUploader imageUploader)
         {
             _dbContext = dbContext;
             _imageUploader = imageUploader;
