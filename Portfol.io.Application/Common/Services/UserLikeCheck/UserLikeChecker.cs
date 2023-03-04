@@ -2,7 +2,7 @@
 using Portfol.io.Application.Aggregate.Albums.DTO;
 using Portfol.io.Domain;
 
-namespace Portfol.io.Application.Common.Services.LikeCheck
+namespace Portfol.io.Application.Common.Services.UserLikeCheck
 {
     /// <summary>
     /// Check the user's like album. <see cref="T"/> will be <see cref="List{T}"/>

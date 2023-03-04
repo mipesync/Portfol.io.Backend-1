@@ -6,7 +6,7 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumById
     /// <summary>
     /// Запрос на получение альбома по идентификатору
     /// </summary>
-    public class GetAlbumByIdQuery : IRequest<GetAlbumLookupDto>
+    public class GetAlbumByIdQuery : IRequest<GetAlbumByIdDto>
     {
         /// <summary>
         /// Идентификатор альбома

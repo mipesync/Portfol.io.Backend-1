@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Portfol.io.Application.Aggregate.Albums.DTO;
-using Portfol.io.Application.Common.Services.LikeCheck;
+using Portfol.io.Application.Common.Services.UserLikeCheck;
 using Portfol.io.Application.Interfaces;
 
 namespace Portfol.io.Application.Aggregate.Albums.Queries.SearchAlbum

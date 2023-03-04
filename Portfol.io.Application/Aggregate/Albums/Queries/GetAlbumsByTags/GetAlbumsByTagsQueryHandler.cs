@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Portfol.io.Application.Aggregate.Albums.DTO;
 using Portfol.io.Application.Common.Exceptions;
-using Portfol.io.Application.Common.Services.LikeCheck;
+using Portfol.io.Application.Common.Services.UserLikeCheck;
 using Portfol.io.Application.Interfaces;
 using Portfol.io.Domain;
 

@@ -6,7 +6,7 @@ using Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage;
 using Portfol.io.Application.Aggregate.Photos.Queries.GetImageByAlbumId;
 using Portfol.io.Application.Aggregate.Photos.Queries.GetImageById;
 using Portfol.io.Application.Common.Exceptions;
-using Portfol.io.WebAPI.Models;
+using Portfol.io.Application.Models;
 
 namespace Portfol.io.WebAPI.Controllers
 {

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Portfol.io.Application.Aggregate.Albums.Commands.CreateAlbum;
 using Portfol.io.Application.Aggregate.Albums.Commands.DeleteAlbumCover;
@@ -15,8 +14,8 @@ using Portfol.io.Application.Aggregate.Albums.Queries.GetAllAlbums;
 using Portfol.io.Application.Aggregate.Albums.Queries.GetMarkedAlbums;
 using Portfol.io.Application.Aggregate.Albums.Queries.SearchAlbum;
 using Portfol.io.Application.Common.Exceptions;
-using Portfol.io.WebAPI.Models;
-using CreateAlbumDto = Portfol.io.Application.CreateAlbumDto;
+using Portfol.io.Application.Models;
+using CreateAlbumDto = Portfol.io.Application.Models.CreateAlbumDto;
 
 namespace Portfol.io.WebAPI.Controllers
 {

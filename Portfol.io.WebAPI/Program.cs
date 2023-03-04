@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Portfol.io.Application;
-using Portfol.io.Application.Common.Mappings;
 using Portfol.io.Persistence;
 using Portfol.io.WebAPI;
 using System.Reflection;
@@ -13,7 +12,6 @@ var config = builder.Configuration;
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
 builder.Services.AddPersistence(connectionString!);
 builder.Services.AddApplication();
-builder.Services.AddAutoMapper(u => u.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly())));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
