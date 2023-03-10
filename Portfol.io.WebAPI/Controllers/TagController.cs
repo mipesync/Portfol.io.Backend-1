@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Portfol.io.Application.Aggregate.Tags.Commands.AddTag;
 using Portfol.io.Application.Aggregate.Tags.Commands.DeleteTag;
 using Portfol.io.Application.Aggregate.Tags.Queries.GetTags;
-using Portfol.io.Application.Common.Exceptions;
 
 namespace Portfol.io.WebAPI.Controllers
 {
@@ -13,16 +12,9 @@ namespace Portfol.io.WebAPI.Controllers
         [HttpGet("getTags")]
         public async Task<IActionResult> GetTags()
         {
-            try
-            {
-                var tags = await Mediator.Send(new GetTagsQuery());
+            var tags = await Mediator.Send(new GetTagsQuery());
 
-                return Ok(tags);
-            }
-            catch (NotFoundException e)
-            {
-                return NotFound(new { message = e.Message });
-            }
+            return Ok(tags);
         }
 
         [HttpPost("addTag")]
@@ -36,16 +28,9 @@ namespace Portfol.io.WebAPI.Controllers
         [HttpDelete("deleteTag")]
         public async Task<IActionResult> DeleteTag(Guid tagId)
         {
-            try
-            {
-                await Mediator.Send(new DeleteTagCommand { Id = tagId });
+            await Mediator.Send(new DeleteTagCommand { Id = tagId });
 
-                return Ok();
-            }
-            catch (NotFoundException e)
-            {
-                return NotFound(new {message = e.Message});
-            }
+            return Ok();
         }
     }
 }

@@ -30,10 +30,10 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumById
                 .Include(u => u.AlbumLikes)
                 .FirstOrDefaultAsync(u => u.Id == request.Id, cancellationToken);
 
-            entity!.Views++;
-
             if (entity is null || entity.Id != request.Id)
                 throw new NotFoundException(nameof(Album), request.Id);
+
+            entity.Views++;
 
             var dto = _mapper.Map<GetAlbumByIdDto>(entity);
             if (entity.AlbumLikes!.Any(u => u.UserId == request.UserId))

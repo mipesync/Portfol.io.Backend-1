@@ -1,6 +1,7 @@
 using Portfol.io.Application;
 using Portfol.io.Persistence;
 using Portfol.io.WebAPI.Middlewares;
+using Portfol.io.WebAPI.Middlewares.ExceptionMiddleware;
 using Portfol.io.WebAPI.ServiceConfigurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,6 +48,8 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(e, $"An error occured while initializing the database: {e.Message}");
     }
 }
+
+app.UseExceptionMiddleware();
 
 app.UseStaticFiles();
 
