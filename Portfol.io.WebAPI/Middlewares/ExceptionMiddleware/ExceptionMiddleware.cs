@@ -36,11 +36,7 @@ namespace Portfol.io.WebAPI.Middlewares.ExceptionMiddleware
                     statusCode = (int)HttpStatusCode.NotFound;
                     break;
                 case WrongException:
-                    statusCode = (int)HttpStatusCode.BadRequest;
-                    break;
                 case DoesNotMatchException:
-                    statusCode = (int)HttpStatusCode.BadRequest;
-                    break;
                 case ValidationException:
                     statusCode = (int)HttpStatusCode.BadRequest;
                     break;
