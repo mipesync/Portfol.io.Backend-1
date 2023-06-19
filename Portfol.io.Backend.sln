@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfol.io.Persistence", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfol.io.WebAPI", "Portfol.io.WebAPI\Portfol.io.WebAPI.csproj", "{65C4F6AA-82B3-46DF-A69B-FD2F84D01C44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfol.io.Tests", "Portfol.io.Tests\Portfol.io.Tests.csproj", "{D814AF00-79E7-4AD2-8346-D58DC9F63F56}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{65C4F6AA-82B3-46DF-A69B-FD2F84D01C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C4F6AA-82B3-46DF-A69B-FD2F84D01C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C4F6AA-82B3-46DF-A69B-FD2F84D01C44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D814AF00-79E7-4AD2-8346-D58DC9F63F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D814AF00-79E7-4AD2-8346-D58DC9F63F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D814AF00-79E7-4AD2-8346-D58DC9F63F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D814AF00-79E7-4AD2-8346-D58DC9F63F56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,7 +50,6 @@ Global
 		{15362967-85F7-4E3F-B8CC-2330CDBB1DF7} = {1A1EA049-0408-49DE-955E-E6706D6134CD}
 		{511921DE-6ACD-4EFC-8A4E-9ADEEA0AF07C} = {C4AF5E6D-CF8B-4088-ACE1-A9CC944EB3B4}
 		{65C4F6AA-82B3-46DF-A69B-FD2F84D01C44} = {D5DBA37C-E9DC-4593-A82A-FEA5B8C15DD6}
-		{D814AF00-79E7-4AD2-8346-D58DC9F63F56} = {0D9D017B-F2BC-4025-93E4-0E0289872771}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B40B60FF-BFBE-4F5E-AE08-233861864E9C}

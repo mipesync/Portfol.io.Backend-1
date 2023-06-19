@@ -9,6 +9,7 @@
         public DateTime CreationDate { get; set; }
         public Guid UserId { get; set; }
         public bool IsLiked { get; set; }
+        public bool IsFavourite { get; set; }
         public int Likes { get; set; }
         public int Views { get; set; }
     }

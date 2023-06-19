@@ -16,5 +16,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumsByUserId
         /// Идентификатор авторизованного пользователя
         /// </summary>
         public Guid AUserId { get; set; }
+        /// <summary>
+        /// Адрес текущего хоста
+        /// </summary>
+        public string Url { get; set; } = "";
     }
 }

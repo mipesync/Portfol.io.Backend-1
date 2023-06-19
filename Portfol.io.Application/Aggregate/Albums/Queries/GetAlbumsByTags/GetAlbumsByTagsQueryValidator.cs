@@ -9,7 +9,7 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumsByTags
             RuleFor(getAlbumsByTagsQueryValidator => getAlbumsByTagsQueryValidator.TagIds)
                 .NotEqual(default(IEnumerable<Guid>));
             RuleFor(getAlbumsByTagsQueryValidator => getAlbumsByTagsQueryValidator.UserId)
-                .NotEqual(Guid.Empty).WithMessage("UserId is required."); ;
+                .NotEqual(Guid.Empty).WithMessage("UserId is required.");
         }
     }
 }

@@ -24,20 +24,20 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumById
 
         public async Task<GetAlbumByIdDto> Handle(GetAlbumByIdQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Albums
-                .Include(u => u.Photos)
+            var entity = (await _dbContext.Albums
+                .Include(u => u.Files)
                 .Include(u => u.Tags)
                 .Include(u => u.AlbumLikes)
-                .FirstOrDefaultAsync(u => u.Id == request.Id, cancellationToken);
-
-            if (entity is null || entity.Id != request.Id)
-                throw new NotFoundException(nameof(Album), request.Id);
+                .FirstOrDefaultAsync(u => u.Id == request.Id, cancellationToken))
+                ?? throw new NotFoundException(nameof(Album), request.Id);
 
             entity.Views++;
 
-            var dto = _mapper.Map<GetAlbumByIdDto>(entity);
-            if (entity.AlbumLikes!.Any(u => u.UserId == request.UserId))
-                dto.IsLiked = true;
+            var dto = _mapper.Map<GetAlbumByIdDto>(entity, opt =>
+            {
+                opt.Items["userId"] = request.UserId;
+                opt.Items["url"] = request.Url;
+            });
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Portfol.io.Application.Aggregate.Photos.DTO;
+using Portfol.io.Application.Aggregate.Files.DTO;
 
-namespace Portfol.io.Application.Aggregate.Photos.Queries.GetImageById
+namespace Portfol.io.Application.Aggregate.Files.Queries.GetImageById
 {
     /// <summary>
     /// Запрос на получение файла по идентификатору

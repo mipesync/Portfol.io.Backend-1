@@ -4,7 +4,7 @@ using FileIO = System.IO.File;
 
 namespace Portfol.io.Persistence.Services
 {
-    public class ImageUploader : IImageUploader
+    public class FileUploader : IFileUploader
     {
         public IFormFile File { get; set; } = null!;
         public string AbsolutePath { get; set; } = null!;

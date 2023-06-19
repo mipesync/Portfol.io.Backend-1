@@ -4,14 +4,14 @@ using Portfol.io.Application.Common.Exceptions;
 using Portfol.io.Application.Interfaces;
 using Portfol.io.Domain;
 
-namespace Portfol.io.Application.Aggregate.Photos.Commands.AddImage
+namespace Portfol.io.Application.Aggregate.Files.Commands.AddImage
 {
     public class AddImageCommandHandler : IRequestHandler<AddImageCommand, ICollection<Guid>>
     {
         private readonly IDbContext _dbContext;
-        private readonly IImageUploader _uploader;
+        private readonly IFileUploader _uploader;
 
-        public AddImageCommandHandler(IDbContext dbContext, IImageUploader uploader)
+        public AddImageCommandHandler(IDbContext dbContext, IFileUploader uploader)
         {
             _dbContext = dbContext;
             _uploader = uploader;
@@ -36,13 +36,13 @@ namespace Portfol.io.Application.Aggregate.Photos.Commands.AddImage
                 _uploader.AbsolutePath = $"/AlbumImages/{entity.UserId}/{entity.Id}";
                 var imagePath = await _uploader.Upload();
 
-                var photo = new Photo
+                var photo = new Domain.File
                 {
                     Path = imagePath,
                     AlbumId = request.AlbumId
                 };
 
-                await _dbContext.Photos.AddAsync(photo, cancellationToken);
+                await _dbContext.Files.AddAsync(photo, cancellationToken);
 
                 guids.Add(photo.Id);
             }

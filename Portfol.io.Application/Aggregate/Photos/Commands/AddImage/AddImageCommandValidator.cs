@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Portfol.io.Application.Aggregate.Photos.Commands.AddImage
+namespace Portfol.io.Application.Aggregate.Files.Commands.AddImage
 {
     public class AddImageCommandValidator : AbstractValidator<AddImageCommand>
     {

@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Portfol.io.Application.Aggregate.Albums.DTO;
 using Portfol.io.Application.Common.Exceptions;
-using Portfol.io.Application.Common.Services.UserLikeCheck;
+using Portfol.io.Application.Common.Services;
 using Portfol.io.Application.Interfaces;
 using Portfol.io.Domain;
 
@@ -22,30 +22,16 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetMarkedAlbums
 
         public async Task<GetAlbumsDto> Handle(GetMarkedAlbumsQuery request, CancellationToken cancellationToken)
         {
-            var albumBookmarks = await _dbContext.AlbumBookmarks
+            var albums = (await _dbContext.AlbumBookmarks
                 .AsNoTracking()
+                .Include(u => u.Album)
                 .Where(u => u.UserId == request.UserId)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(cancellationToken))
+                ?? throw new NotFoundException(nameof(Album), request.UserId);
 
-            var albums = new List<Album>();
+            var lookups = AlbumMapper.Map(_mapper, albums.Select(u => u.Album).ToList(), request.UserId, request.Url);
 
-            foreach (var albumBookmark in albumBookmarks)
-            {
-                var album = await _dbContext.Albums
-                    .AsNoTracking()
-                    .Include(u => u.Photos)
-                    .Include(u => u.AlbumLikes!)
-                    .FirstOrDefaultAsync(u => u.Id == albumBookmark.AlbumId, cancellationToken);
-                albums.Add(album!);
-            }
-
-            var albumDtos = new UserLikeChecker<GetAlbumLookupDto>(_mapper)
-                .Check(request.UserId, albums);
-
-            if (albums.Count == 0)
-                throw new NotFoundException(nameof(Album), null!);
-
-            return new GetAlbumsDto { Albums = albumDtos };
+            return new GetAlbumsDto { Albums = lookups };
         }
     }
 }

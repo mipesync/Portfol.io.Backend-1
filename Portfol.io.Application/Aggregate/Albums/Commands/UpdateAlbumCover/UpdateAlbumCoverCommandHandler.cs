@@ -9,9 +9,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.UpdateAlbumCover
     public class UpdateAlbumCoverCommandHandler : IRequestHandler<UpdateAlbumCoverCommand, Unit>
     {
         private readonly IDbContext _dbContext;
-        private readonly IImageUploader _imageUploader;
+        private readonly IFileUploader _imageUploader;
 
-        public UpdateAlbumCoverCommandHandler(IDbContext dbContext, IImageUploader imageUploader)
+        public UpdateAlbumCoverCommandHandler(IDbContext dbContext, IFileUploader imageUploader)
         {
             _dbContext = dbContext;
             _imageUploader = imageUploader;
@@ -28,7 +28,7 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.UpdateAlbumCover
                 throw new Exception("Вы не можете редактировать чужой альбом");
 
             if (entity.Cover != null)
-                File.Delete(String.Concat(request.WebRootPath, entity.Cover!));
+                System.IO.File.Delete(String.Concat(request.WebRootPath, entity.Cover!));
 
             _imageUploader.WebRootPath = request.WebRootPath is null
                 ? throw new ArgumentException("WebRootPath не может быть пустым")

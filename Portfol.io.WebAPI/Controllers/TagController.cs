@@ -6,7 +6,7 @@ using Portfol.io.Application.Aggregate.Tags.Queries.GetTags;
 
 namespace Portfol.io.WebAPI.Controllers
 {
-    [Authorize(Roles = "employee, admin, support")]
+    //[Authorize(Roles = "employee, admin, support")]
     public class TagController : BaseController
     {
         [HttpGet("getTags")]

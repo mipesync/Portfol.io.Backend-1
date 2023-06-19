@@ -22,7 +22,7 @@ namespace Portfol.io.WebAPI.Controllers
     /// <summary>
     /// The album controller, which contains all the logic for working with albums.
     /// </summary>
-    [Authorize]
+    //[Authorize]
     public class AlbumController : BaseController
     {
         private readonly IMapper _mapper;
@@ -35,15 +35,9 @@ namespace Portfol.io.WebAPI.Controllers
         }
 
         [HttpGet("getAll")]
-        //[Authorize(Roles = "admin, support")]
         public async Task<IActionResult> GetAlbums()
         {
-            var result = await Mediator.Send(new GetAllAlbumsQuery { UserId = UserId });
-                
-            foreach (var album in result.Albums)
-            {
-                album.Cover = UrlRaw + album.Cover;
-            }
+            var result = await Mediator.Send(new GetAllAlbumsQuery { UserId = UserId, Url = UrlRaw });
 
             return Ok(result);
         }
@@ -51,16 +45,9 @@ namespace Portfol.io.WebAPI.Controllers
         [HttpGet("getById")]
         public async Task<IActionResult> GetById(Guid albumId)
         {
-            var query = new GetAlbumByIdQuery { Id = albumId };
-            query.UserId = UserId;
+            var query = new GetAlbumByIdQuery { Id = albumId, UserId = UserId, Url = UrlRaw };
 
             var album = await Mediator.Send(query);
-            album.Cover = UrlRaw + album.Cover;
-
-            foreach (var photo in album.Photos!)
-            {
-                photo.Path = $"{UrlRaw}{photo.Path}";
-            }
 
             return Ok(album);
         }
@@ -68,14 +55,14 @@ namespace Portfol.io.WebAPI.Controllers
         [HttpGet("getByUserId")]
         public async Task<IActionResult> GetByUserId(Guid userId)
         {
-            var query = new GetAlbumsByUserIdQuery { UserId = userId, AUserId = UserId };
+            var query = new GetAlbumsByUserIdQuery 
+            { 
+                UserId = userId, 
+                AUserId = UserId,
+                Url = UrlRaw
+            };
 
             var result = await Mediator.Send(query);
-
-            foreach (var album in result.Albums)
-            {
-                album.Cover = UrlRaw + album.Cover;
-            }
 
             return Ok(result);
         }
@@ -83,15 +70,10 @@ namespace Portfol.io.WebAPI.Controllers
         [HttpGet("getByTags")]
         public async Task<IActionResult> GetByTags([FromQuery] IEnumerable<Guid> tagIds)
         {
-            var query = new GetAlbumsByTagsQuery { TagIds = tagIds };
+            var query = new GetAlbumsByTagsQuery { TagIds = tagIds, Url = UrlRaw };
             query.UserId = UserId;
 
             var result = await Mediator.Send(query);
-
-            foreach (var album in result.Albums)
-            {
-                album.Cover = UrlRaw + album.Cover;
-            }
 
             return Ok(result);
         }
@@ -99,12 +81,7 @@ namespace Portfol.io.WebAPI.Controllers
         [HttpGet("getMarked")]
         public async Task<IActionResult> GetMarked()
         {
-            var result = await Mediator.Send(new GetMarkedAlbumsQuery { UserId = UserId });
-
-            foreach (var album in result.Albums)
-            {
-                album.Cover = UrlRaw + album.Cover;
-            }
+            var result = await Mediator.Send(new GetMarkedAlbumsQuery { UserId = UserId, Url = UrlRaw });
 
             return Ok(result);
         }
@@ -152,11 +129,6 @@ namespace Portfol.io.WebAPI.Controllers
                 Query = query.ToLower(),
                 UserId = UserId
             });
-
-            foreach (var album in result.Albums)
-            {
-                album.Cover = UrlRaw + album.Cover;
-            }
 
             return Ok(result);
         }

@@ -2,6 +2,6 @@
 {
     public class GetAlbumsDto
     {
-        public IEnumerable<GetAlbumLookupDto> Albums { get; set; } = null!;
+        public ICollection<GetAlbumLookupDto> Albums { get; set; } = null!;
     }
 }

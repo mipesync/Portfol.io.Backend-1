@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Portfol.io.Application.Aggregate.Photos.Queries.GetImageByAlbumId
+namespace Portfol.io.Application.Aggregate.Files.Queries.GetImageByAlbumId
 {
     public class GetImagesByAlbumIdQueryValidator : AbstractValidator<GetImagesByAlbumIdQuery>
     {

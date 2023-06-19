@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace Portfol.io.Application.Aggregate.Photos.Commands.AddImage
+namespace Portfol.io.Application.Aggregate.Files.Commands.AddImage
 {
     /// <summary>
     /// Команда на добавление файлов в альбом

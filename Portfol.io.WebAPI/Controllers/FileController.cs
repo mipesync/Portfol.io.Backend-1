@@ -1,21 +1,21 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Portfol.io.Application.Aggregate.Photos.Commands.AddImage;
-using Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage;
-using Portfol.io.Application.Aggregate.Photos.Queries.GetImageByAlbumId;
-using Portfol.io.Application.Aggregate.Photos.Queries.GetImageById;
+using Portfol.io.Application.Aggregate.Files.Commands.AddImage;
+using Portfol.io.Application.Aggregate.Files.Commands.DeleteImage;
+using Portfol.io.Application.Aggregate.Files.Queries.GetImageByAlbumId;
+using Portfol.io.Application.Aggregate.Files.Queries.GetImageById;
 using Portfol.io.Application.Models;
 
 namespace Portfol.io.WebAPI.Controllers
 {
     //[Authorize]
-    public class ImageController : BaseController
+    public class FileController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _environment;
 
-        public ImageController(IMapper mapper, IWebHostEnvironment environment)
+        public FileController(IMapper mapper, IWebHostEnvironment environment)
         {
             _mapper = mapper;
             _environment = environment;

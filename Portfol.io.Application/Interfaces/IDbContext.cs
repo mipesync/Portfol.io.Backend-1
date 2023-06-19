@@ -15,7 +15,7 @@ namespace Portfol.io.Application.Interfaces
         /// <summary>
         ///     Получить/установить список файлов
         /// </summary>
-        DbSet<Photo> Photos { get; set; }
+        DbSet<Domain.File> Files { get; set; }
         /// <summary>
         ///     Получить/установить список тегов
         /// </summary>

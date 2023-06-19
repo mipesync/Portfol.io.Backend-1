@@ -1,4 +1,4 @@
-﻿namespace Portfol.io.Application.Aggregate.Photos.DTO
+﻿namespace Portfol.io.Application.Aggregate.Files.DTO
 {
     public class GetImageByIdDto
     {

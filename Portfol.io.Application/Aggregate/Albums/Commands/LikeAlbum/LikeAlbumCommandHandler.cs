@@ -18,16 +18,18 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.LikeAlbum
 
         public async Task<Unit> Handle(LikeAlbumCommand request, CancellationToken cancellationToken)
         {
-            var album = await _dbContext.Albums.FirstOrDefaultAsync(u => u.Id == request.AlbumId, cancellationToken);
+            var album = await _dbContext.Albums
+                .FirstOrDefaultAsync(u => u.Id == request.AlbumId, cancellationToken);
 
             if (album is null || album.Id != request.AlbumId)
                 throw new NotFoundException(nameof(Album), request.AlbumId);
 
-            if (album.UserId == request.UserId) throw new Exception("Вы не можете оценивать свой альбом");
+            if (album.UserId == request.UserId) 
+                throw new Exception("Вы не можете оценивать свой альбом");
 
             var entity = new AlbumLike
             {
-                AlbumId = request.AlbumId,
+                Album = album,
                 UserId = request.UserId
             };
 

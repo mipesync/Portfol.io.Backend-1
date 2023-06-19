@@ -2,9 +2,18 @@
 
 namespace Portfol.io.Domain
 {
+    /// <summary>
+    /// Класс лайка
+    /// </summary>
     public class AlbumLike
     {
+        /// <summary>
+        /// Идентификатор пользователя
+        /// </summary>
         public Guid UserId { get; set; }
+        /// <summary>
+        /// Идентификатор альбома
+        /// </summary>
         public Guid AlbumId { get; set; }
 
         [JsonIgnore]

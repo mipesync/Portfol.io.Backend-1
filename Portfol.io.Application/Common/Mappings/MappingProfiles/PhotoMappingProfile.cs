@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Portfol.io.Application.Aggregate.Photos.DTO;
+using Portfol.io.Application.Aggregate.Files.DTO;
 using Portfol.io.Domain;
 
 namespace Portfol.io.Application.Common.Mappings.MappingProfiles
@@ -8,8 +8,8 @@ namespace Portfol.io.Application.Common.Mappings.MappingProfiles
     {
         public PhotoMappingProfile()
         {
-            CreateMap<Photo, GetImageByIdDto>(MemberList.Source);
-            CreateMap<Photo, ImageLookupDto>(MemberList.Source);
+            CreateMap<Domain.File, GetImageByIdDto>(MemberList.Source);
+            CreateMap<Domain.File, ImageLookupDto>(MemberList.Source);
         }
     }
 }

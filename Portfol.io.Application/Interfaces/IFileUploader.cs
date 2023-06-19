@@ -3,9 +3,9 @@
 namespace Portfol.io.Application.Interfaces
 {
     /// <summary>
-    /// Интерфейс загрузчика изображений
+    /// Интерфейс загрузчика файлов
     /// </summary>
-    public interface IImageUploader
+    public interface IFileUploader
     {
         /// <summary>
         /// Получить/установить файл

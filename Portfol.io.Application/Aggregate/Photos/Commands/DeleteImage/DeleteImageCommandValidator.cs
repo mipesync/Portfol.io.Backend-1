@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage
+namespace Portfol.io.Application.Aggregate.Files.Commands.DeleteImage
 {
     public class DeleteImageCommandValidator : AbstractValidator<DeleteImageCommand>
     {

@@ -4,11 +4,11 @@ using Portfol.io.Domain;
 
 namespace Portfol.io.Persistence.EntityTypeConfigurations
 {
-    public class PhotoConfiguration : IEntityTypeConfiguration<Photo>
+    public class FileConfiguration : IEntityTypeConfiguration<Domain.File>
     {
-        public void Configure(EntityTypeBuilder<Photo> builder)
+        public void Configure(EntityTypeBuilder<Domain.File> builder)
         {
-            builder.ToTable("Photos");
+            builder.ToTable("Files");
 
             builder.HasKey(p => p.Id);
             builder.HasIndex(p => p.Id).IsUnique();
@@ -18,7 +18,7 @@ namespace Portfol.io.Persistence.EntityTypeConfigurations
                 .IsRequired();
 
             builder.HasOne(u => u.Album)
-                .WithMany(u => u.Photos)
+                .WithMany(u => u.Files)
                 .HasForeignKey(u => u.AlbumId);
         }
     }

@@ -22,7 +22,7 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.DeleteAlbumCover
             if (entity is null || entity.Id != request.AlbumId)
                 throw new NotFoundException(nameof(Album), request.AlbumId);
 
-            File.Delete(String.Concat(request.WebRootPath, entity.Cover));
+            System.IO.File.Delete(String.Concat(request.WebRootPath, entity.Cover));
             //TODO: Удалить этот бред
             entity.Cover = "/AlbumCovers/default.png";
 

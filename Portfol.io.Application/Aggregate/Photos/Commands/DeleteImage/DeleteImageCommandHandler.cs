@@ -4,7 +4,7 @@ using Portfol.io.Application.Common.Exceptions;
 using Portfol.io.Application.Interfaces;
 using Portfol.io.Domain;
 
-namespace Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage
+namespace Portfol.io.Application.Aggregate.Files.Commands.DeleteImage
 {
     public class DeleteImageCommandHandler : IRequestHandler<DeleteImageCommand, Unit>
     {
@@ -17,17 +17,18 @@ namespace Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage
 
         public async Task<Unit> Handle(DeleteImageCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Photos
+            var entity = await _dbContext.Files
                 .FirstOrDefaultAsync(u => u.AlbumId == request.AlbumId && u.Id == request.ImageId, cancellationToken);
 
             if (entity is null || entity.Id != request.ImageId || entity.AlbumId != request.AlbumId)
-                throw new NotFoundException(nameof(Photo), request.ImageId);
+                throw new NotFoundException(nameof(Domain.File), request.ImageId);
 
-            File.Delete($"{(request.WebRootPath is null
-                ? throw new ArgumentException("WebRootPath не может быть пустым")
-                : request.WebRootPath)}{entity.Path}");
+            if (request.WebRootPath is null)
+                throw new ArgumentException("WebRootPath не может быть пустым");
 
-            _dbContext.Photos.Remove(entity);
+            System.IO.File.Delete($"{request.WebRootPath}{entity.Path}");
+
+            _dbContext.Files.Remove(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;

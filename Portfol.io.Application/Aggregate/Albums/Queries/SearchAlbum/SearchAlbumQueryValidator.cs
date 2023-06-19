@@ -11,6 +11,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.SearchAlbum
 
             RuleFor(searchAlbumQuery => searchAlbumQuery.UserId)
                 .NotEqual(Guid.Empty).WithMessage("UserId is required.");
+
+            RuleFor(getAllAlbumsQuery => getAllAlbumsQuery.Url)
+                .NotEqual(string.Empty).WithMessage("Url is required.");
         }
     }
 }

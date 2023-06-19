@@ -15,18 +15,17 @@ namespace Portfol.io.Application.Aggregate.Albums.Commands.MarkAlbum
         {
             _dbContext = dbContext;
         }
-
+        //TODO: Разделить функционал тут и в лайках
         public async Task<Unit> Handle(MarkAlbumCommand request, CancellationToken cancellationToken)
         {
-            var album = await _dbContext.Albums.FirstOrDefaultAsync(u => u.Id == request.AlbumId, cancellationToken);
-
-            if (album is null || album.Id != request.AlbumId)
-                throw new NotFoundException(nameof(Album), request.AlbumId);
+            var album = (await _dbContext.Albums
+                .FirstOrDefaultAsync(u => u.Id == request.AlbumId, cancellationToken))
+                ?? throw new NotFoundException(nameof(Album), request.AlbumId);
 
             var entity = new AlbumBookmark
             {
                 UserId = request.UserId,
-                AlbumId = request.AlbumId
+                Album = album
             };
 
             await _dbContext.AlbumBookmarks.AddAsync(entity, cancellationToken);

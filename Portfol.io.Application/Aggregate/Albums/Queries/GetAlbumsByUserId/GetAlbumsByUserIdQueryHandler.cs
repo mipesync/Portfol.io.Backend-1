@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Portfol.io.Application.Aggregate.Albums.DTO;
 using Portfol.io.Application.Common.Exceptions;
-using Portfol.io.Application.Common.Services.UserLikeCheck;
+using Portfol.io.Application.Common.Services;
 using Portfol.io.Application.Interfaces;
 using Portfol.io.Domain;
 
@@ -22,20 +22,17 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetAlbumsByUserId
 
         public async Task<GetAlbumsDto> Handle(GetAlbumsByUserIdQuery request, CancellationToken cancellationToken)
         {
-            var entities = await _dbContext.Albums
+            var entities = (await _dbContext.Albums
                 .AsNoTracking()
-                .Include(u => u.Photos)
+                .Include(u => u.Files)
                 .Include(u => u.AlbumLikes!)
                 .Where(u => u.UserId == request.UserId)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(cancellationToken))
+                ?? throw new NotFoundException(nameof(Album), request.UserId);
 
-            var albumDtos = new UserLikeChecker<GetAlbumLookupDto>(_mapper)
-                .Check(request.AUserId, entities);
+            var lookups = AlbumMapper.Map(_mapper, entities, request.AUserId, request.Url);
 
-            if (entities.Count == 0)
-                throw new NotFoundException(nameof(Album), request.UserId);
-
-            return new GetAlbumsDto { Albums = albumDtos };
+            return new GetAlbumsDto { Albums = lookups }; 
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Portfol.io.Application.Aggregate.Albums.DTO
         public string? Cover { get; set; }
         public DateTime CreationDate { get; set; }
         public Guid UserId { get; set; }
-        public IEnumerable<Photo> Photos { get; set; } = new List<Photo>();
+        public IEnumerable<Domain.File> Files { get; set; } = new List<Domain.File>();
         public IEnumerable<Tag> Tags { get; set; } = new List<Tag>();
         public bool IsLiked { get; set; }
         public int Likes { get; set; }

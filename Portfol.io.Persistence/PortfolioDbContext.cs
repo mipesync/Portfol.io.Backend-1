@@ -11,7 +11,7 @@ namespace Portfol.io.Persistence
 
 
         public DbSet<Album> Albums { get; set; } = null!;
-        public DbSet<Photo> Photos { get; set; } = null!;
+        public DbSet<Domain.File> Files { get; set; } = null!;
         public DbSet<Tag> Tags { get; set; } = null!;
         public DbSet<AlbumTag> AlbumTags { get; set; } = null!;
         public DbSet<AlbumLike> AlbumLikes { get; set; } = null!;

@@ -12,5 +12,9 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.GetMarkedAlbums
         /// Идентификатор пользователя
         /// </summary>
         public Guid UserId { get; set; }
+        /// <summary>
+        /// Адрес текущего хоста
+        /// </summary>
+        public string Url { get; set; } = "";
     }
 }

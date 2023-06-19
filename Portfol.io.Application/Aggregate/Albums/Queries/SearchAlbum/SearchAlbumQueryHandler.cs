@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Portfol.io.Application.Aggregate.Albums.DTO;
-using Portfol.io.Application.Common.Services.UserLikeCheck;
+using Portfol.io.Application.Common.Services;
 using Portfol.io.Application.Interfaces;
 
 namespace Portfol.io.Application.Aggregate.Albums.Queries.SearchAlbum
@@ -20,16 +20,15 @@ namespace Portfol.io.Application.Aggregate.Albums.Queries.SearchAlbum
 
         public async Task<GetAlbumsDto> Handle(SearchAlbumQuery request, CancellationToken cancellationToken)
         {
-            var albums = await _dbContext.Albums
+            var entities = await _dbContext.Albums
                 .AsNoTracking()
                 .Include(u => u.AlbumLikes)
                 .Where(x => x.SearchVector.Matches(request.Query!))
                 .ToListAsync(cancellationToken);
 
-            var lookUps = new UserLikeChecker<GetAlbumLookupDto>(_mapper)
-                .Check(request.UserId, albums.ToList());
+            var lookups = AlbumMapper.Map(_mapper, entities, request.UserId, request.Url);
 
-            return new GetAlbumsDto { Albums = lookUps };
+            return new GetAlbumsDto { Albums = lookups };
         }
     }
 }

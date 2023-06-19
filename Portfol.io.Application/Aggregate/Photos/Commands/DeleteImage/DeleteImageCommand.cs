@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage
+namespace Portfol.io.Application.Aggregate.Files.Commands.DeleteImage
 {
     /// <summary>
     /// Команда на удаление файла из альбома

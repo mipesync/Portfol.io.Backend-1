@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Portfol.io.Application.Aggregate.Albums.Commands.CreateAlbum;
 using Portfol.io.Application.Aggregate.Albums.Commands.UpdateAlbum;
-using Portfol.io.Application.Aggregate.Photos.Commands.AddImage;
-using Portfol.io.Application.Aggregate.Photos.Commands.DeleteImage;
+using Portfol.io.Application.Aggregate.Files.Commands.AddImage;
+using Portfol.io.Application.Aggregate.Files.Commands.DeleteImage;
 using Portfol.io.Application.Models;
 
 namespace Portfol.io.Application.Common.Mappings.MappingProfiles
